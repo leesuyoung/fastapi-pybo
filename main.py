@@ -8,6 +8,8 @@ from domain.question import question_router
 from domain.user import user_router
 
 app = FastAPI()
+
+# 로컬에세 개발 하기 위해 CLOA 보안 정책 우회를 위한 설정
 origins = "http://127.0.0.1:3000/"
 app.add_middleware(
     CORSMiddleware,
