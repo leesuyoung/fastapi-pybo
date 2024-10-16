@@ -11,12 +11,13 @@ def create_dash_app(requests_pathname_prefix: str = None) -> dash.Dash:
     """
     Sample Dash application from Plotly: https://github.com/plotly/dash-hello-world/blob/master/app.py
     """
-    server = flask.Flask(__name__)
-    server.secret_key = os.environ.get('secret_key', 'secret')
+    # server = flask.Flask(__name__)
+    # server.secret_key = os.environ.get('secret_key', 'secret')
 
     df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/hello-world-stock.csv')
 
-    app = dash.Dash(__name__, server=server, requests_pathname_prefix=requests_pathname_prefix)
+    # app = dash.Dash(__name__, server=server, requests_pathname_prefix=requests_pathname_prefix)
+    app = dash.Dash(__name__, requests_pathname_prefix=requests_pathname_prefix)
 
     # app.scripts.config.serve_locally = False ##어떤 설정인지 plotly랑 쫑남
     dcc._js_dist[0]['external_url'] = 'https://cdn.plot.ly/plotly-basic-latest.min.js'
