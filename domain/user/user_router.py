@@ -7,12 +7,16 @@ from jose import jwt, JWTError
 from sqlalchemy.orm import Session
 from starlette import status
 
-from database import get_db
+from database import get_db, config
 from domain.user import user_crud, user_schema
 from domain.user.user_crud import pwd_context
 
-ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24
-SECRET_KEY = "4ab2fce7a6bd79e1c014396315ed322dd6edb1c5d975c6b74a2904135172c03c"
+from starlette.config import Config
+
+config = Config('.env')
+
+ACCESS_TOKEN_EXPIRE_MINUTES = int(config('ACCESS_TOKEN_EXPIRE_MINUTES'))
+SECRET_KEY = config('SECRET_KEY')
 ALGORITHM = "HS256"
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/user/login")    #이 경로로 오는 payload는 맵핑 함
 
