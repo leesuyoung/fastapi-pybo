@@ -18,6 +18,9 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
                 {#if $is_login}
                     <li class="nav-item">
+                        <a use:link class="nav-link" href="/dash">Dash-app</a>
+                    </li>
+                    <li class="nav-item">
                         <a use:link href="/user-login" class="nav-link" on:click={() => {
                             $access_token = ''
                             $username = ''
