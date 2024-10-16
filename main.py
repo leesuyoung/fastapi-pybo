@@ -29,12 +29,12 @@ app.add_middleware(
 app.include_router(question_router.router)
 app.include_router(answer_router.router)
 app.include_router(user_router.router)
-# app.mount("/assets", StaticFiles(directory="frontend/dist/assets"))
+app.mount("/assets", StaticFiles(directory="frontend/dist/assets"))
 
 # Dash with Flask bind.
 dash_app = create_dash_app(requests_pathname_prefix="/dash/")
 app.mount("/dash", WSGIMiddleware(dash_app.server))
 
-# @app.get("/")
-# def index():
-#     return FileResponse("frontend/dist/index.html")
+@app.get("/")
+def index():
+    return FileResponse("frontend/dist/index.html")
